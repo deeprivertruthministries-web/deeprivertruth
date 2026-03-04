@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Deep River Truth — Biblical encouragement and truth-centered teaching for everyday life." />
+  <title>Deep River Truth</title>
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#0f1a2f;
+      --text:#e9eefc;
+      --muted:#b8c3e3;
+      --line:rgba(255,255,255,.12);
+      --accent:#7dd3fc;
+      --accent2:#a78bfa;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 1050px;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1100px 600px at 20% 10%, rgba(125,211,252,.14), transparent 55%),
+        radial-gradient(900px 500px at 80% 0%, rgba(167,139,250,.14), transparent 55%),
+        linear-gradient(180deg, #070b14, var(--bg) 45%, #070b14);
+      line-height:1.55;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+
+    .wrap{ max-width:var(--max); margin:0 auto; padding:22px; }
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      background: rgba(7,11,20,.75);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:16px;
+    }
+
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      min-width: 240px;
+    }
+    .logo{
+      width:40px; height:40px; border-radius:14px;
+      background: linear-gradient(135deg, rgba(125,211,252,.9), rgba(167,139,250,.9));
+      box-shadow: var(--shadow);
+    }
+    .brand-title{ font-weight:800; letter-spacing:.3px; }
+    .brand-sub{ font-size:.9rem; color:var(--muted); margin-top:1px; }
+
+    .links{
+      display:flex; flex-wrap:wrap; align-items:center; gap:14px;
+      justify-content:flex-end;
+    }
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      box-shadow: 0 6px 16px rgba(0,0,0,.22);
+      font-weight:600;
+      white-space:nowrap;
+    }
+    .btn:hover{ text-decoration:none; border-color: rgba(255,255,255,.25); }
+    .btn.primary{
+      border: none;
+      background: linear-gradient(135deg, rgba(125,211,252,.95), rgba(167,139,250,.95));
+      color:#071022;
+    }
+
+    /* Hero */
+    .hero{
+      padding: 46px 0 26px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.3fr .7fr;
+      gap: 20px;
+      align-items:stretch;
+    }
+    .panel{
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+    h1{
+      margin: 0 0 10px;
+      font-size: clamp(2.0rem, 4.2vw, 3.0rem);
+      line-height:1.08;
+      letter-spacing:.2px;
+    }
+    .lead{
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 60ch;
+    }
+    .cta-row{ display:flex; flex-wrap:wrap; gap:12px; margin-top: 14px; }
+
+    .quick{
+      display:grid; gap:12px;
+      height:100%;
+    }
+    .chip{
+      padding: 12px 14px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+    }
+    .chip strong{ display:block; margin-bottom:3px; }
+    .chip small{ color:var(--muted); }
+
+    /* Sections */
+    .section{
+      padding: 18px 0;
+    }
+    .section h2{
+      margin: 0 0 10px;
+      font-size: 1.35rem;
+      letter-spacing:.2px;
+    }
+    .muted{ color:var(--muted); }
+
+    /* Cards */
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .card{
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      box-shadow: 0 10px 24px rgba(0,0,0,.25);
+      padding: 16px;
+      display:flex; flex-direction:column; gap:10px;
+      min-height: 170px;
+    }
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-size:.85rem;
+      color: #071022;
+      font-weight:700;
+      padding: 6px 10px;
+      border-radius: 999px;
+      width: fit-content;
+      background: linear-gradient(135deg, rgba(125,211,252,.95), rgba(167,139,250,.95));
+    }
+    .card h3{ margin: 2px 0 0; font-size: 1.05rem; }
+    .card p{ margin:0; color: var(--muted); }
+    .card .meta{ margin-top:auto; display:flex; justify-content:space-between; align-items:center; color:var(--muted); font-size:.9rem; }
+
+    /* About + Contact */
+    .two-col{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      align-items:start;
+    }
+    form{
+      display:grid; gap:10px;
+    }
+    label{ font-size:.95rem; color:var(--muted); }
+    input, textarea{
+      width:100%;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(0,0,0,.22);
+      color: var(--text);
+      outline:none;
+    }
+    input:focus, textarea:focus{ border-color: rgba(125,211,252,.55); }
+    textarea{ min-height: 110px; resize: vertical; }
+    .fineprint{ font-size:.9rem; color:var(--muted); }
+
+    /* Footer */
+    footer{
+      padding: 28px 0 46px;
+      border-top: 1px solid var(--line);
+      margin-top: 18px;
+      color: var(--muted);
+    }
+    .foot{
+      display:flex; flex-wrap:wrap; gap:12px;
+      align-items:center; justify-content:space-between;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .cards{ grid-template-columns: 1fr; }
+      .two-col{ grid-template-columns: 1fr; }
+      .brand{ min-width:auto; }
+      .links{ justify-content:flex-start; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Top bar / Navigation -->
+  <div class="topbar">
+    <div class="wrap nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <div class="brand-title">Deep River Truth</div>
+          <div class="brand-sub">Encouragement • Scripture • Practical faith</div>
+        </div>
+      </div>
+
+      <div class="links" role="navigation" aria-label="Main">
+        <a class="btn" href="#teachings">Teachings</a>
+        <a class="btn" href="#about">About</a>
+        <a class="btn" href="#contact">Contact</a>
+        <!-- Replace with your real Instagram profile link -->
+        <a class="btn primary" href="https://www.instagram.com/YOUR_INSTAGRAM_HANDLE/" target="_blank" rel="noopener">
+          Follow on Instagram
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <header class="wrap hero">
+    <div class="hero-grid">
+      <div class="panel">
+        <h1>Truth-centered teaching for everyday life.</h1>
+        <p class="lead">
+          Welcome to <strong>Deep River Truth</strong> — a simple ministry offering biblical encouragement,
+          short teachings, and practical reflections you can use right now.
+        </p>
+
+        <div class="cta-row">
+          <a class="btn primary" href="#teachings">Read the latest teaching</a>
+          <a class="btn" href="https://deeprivertruth.org" aria-label="Deep River Truth website home">
+            deeprivertruth.org
+          </a>
+        </div>
+
+        <p class="fineprint" style="margin-top:14px;">
+          “Deep calls unto deep…” (Psalm 42:7, KJV)
+          <!-- Swap this verse/line if you prefer -->
+        </p>
+      </div>
+
+      <aside class="panel quick" aria-label="Quick links">
+        <div class="chip">
+          <strong>Start here</strong>
+          <small>What this ministry is about, in one minute.</small><br />
+          <a class="btn" style="margin-top:10px;" href="#about">About Deep River Truth</a>
+        </div>
+        <div class="chip">
+          <strong>Weekly encouragement</strong>
+          <small>Short reflections you can share with others.</small><br />
+          <a class="btn" style="margin-top:10px;" href="#teachings">See teachings</a>
+        </div>
+        <div class="chip">
+          <strong>Connect</strong>
+          <small>Follow for updates and new posts.</small><br />
+          <a class="btn" style="margin-top:10px;" href="https://www.instagram.com/YOUR_INSTAGRAM_HANDLE/" target="_blank" rel="noopener">
+            Instagram
+          </a>
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <!-- Teachings / Featured content -->
+  <main class="wrap">
+    <section class="section" id="teachings">
+      <h2>Featured teachings</h2>
+      <p class="muted">Start with one. Keep it simple. Add more as you publish.</p>
+
+      <div class="cards">
+        <!-- Card 1 -->
+        <article class="card">
+          <div class="tag">Latest</div>
+          <h3>Replacing Fear with Trust</h3>
+          <p>A short reflection on what it means to trust God when life feels uncertain.</p>
+          <div class="meta">
+            <span>3–5 min read</span>
+            <a class="btn" href="teachings/replacing-fear-with-trust.html">Read</a>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="card">
+          <div class="tag">Scripture</div>
+          <h3>Psalm 23 in Modern Words</h3>
+          <p>A simple paraphrase alongside the KJV for clarity and encouragement.</p>
+          <div class="meta">
+            <span>2–4 min read</span>
+            <a class="btn" href="teachings/psalm-23.html">Read</a>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="card">
+          <div class="tag">Practical</div>
+          <h3>How to Pray When You Don’t Feel Like It</h3>
+          <p>Practical steps to keep prayer steady—especially on hard days.</p>
+          <div class="meta">
+            <span>4–6 min read</span>
+            <a class="btn" href="teachings/how-to-pray.html">Read</a>
+          </div>
+        </article>
+      </div>
+
+      <p class="fineprint" style="margin-top:12px;">
+        Tip: You can later replace these with real pages, PDF downloads, or blog posts.
+      </p>
+    </section>
+
+    <!-- About + Contact -->
+    <section class="section two-col" id="about">
+      <div class="panel">
+        <h2>About Deep River Truth</h2>
+        <p class="muted">
+          <!-- Replace the paragraph below with your own words -->
+          Deep River Truth exists to share biblical encouragement and truth-centered teaching
+          in a simple, practical way. If you’re looking for steady, Scripture-rooted guidance,
+          you’re in the right place.
+        </p>
+
+        <ul class="muted">
+          <li>Short teachings and reflections</li>
+          <li>Scripture-based encouragement (KJV-friendly)</li>
+          <li>Practical faith for everyday life</li>
+        </ul>
+
+        <p class="fineprint">
+          Follow updates on Instagram:
+          <a href="https://www.instagram.com/YOUR_INSTAGRAM_HANDLE/" target="_blank" rel="noopener">
+            @YOUR_INSTAGRAM_HANDLE
+          </a>
+        </p>
+      </div>
+
+      <div class="panel" id="contact">
+        <h2>Contact</h2>
+        <p class="muted">Send a note. (This form opens your email app.)</p>
+
+        <!-- This uses a mailto link for simplicity (no server needed). -->
+        <form onsubmit="return sendEmail();">
+          <div>
+            <label for="name">Your name</label>
+            <input id="name" name="name" autocomplete="name" placeholder="John Smith" />
+          </div>
+
+          <div>
+            <label for="email">Your email</label>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" />
+          </div>
+
+          <div>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Write your message here..."></textarea>
+          </div>
+
+          <button class="btn primary" type="submit">Send message</button>
+
+          <p class="fineprint">
+            Prefer email? Replace this address with your ministry email:
+            <a href="mailto:hello@deeprivertruth.org">hello@deeprivertruth.org</a>
+          </p>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <div class="foot">
+        <div>© <span id="year"></span> Deep River Truth • deeprivertruth.org</div>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <a class="btn" href="#teachings">Teachings</a>
+          <a class="btn" href="#about">About</a>
+          <a class="btn" href="https://www.instagram.com/YOUR_INSTAGRAM_HANDLE/" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Update footer year automatically
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Simple mailto-based contact "form"
+    function sendEmail(){
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      const to = "hello@deeprivertruth.org"; // <-- change to your real ministry email
+      const subject = encodeURIComponent("Deep River Truth website message");
+      const body = encodeURIComponent(
+        (name ? `Name: ${name}\n` : "") +
+        (email ? `Email: ${email}\n` : "") +
+        `\nMessage:\n${message}`
+      );
+
+      window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+      return false; // prevent normal form submission
+    }
+  </script>
+</body>
+</html>
