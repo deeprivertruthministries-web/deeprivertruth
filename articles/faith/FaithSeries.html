@@ -1,129 +1,197 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Faith Articles - DeepRiverTruth</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Deep River Truth — Faith Series" />
+  <title>Deep River Truth — Faith Series</title>
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#0f1a2f;
+      --text:#e9eefc;
+      --muted:#b8c3e3;
+      --line:rgba(255,255,255,.12);
+      --accent:#7dd3fc;
+      --accent2:#a78bfa;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 1050px;
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1100px 600px at 20% 10%, rgba(125,211,252,.14), transparent 55%),
+        radial-gradient(900px 500px at 80% 0%, rgba(167,139,250,.14), transparent 55%),
+        linear-gradient(180deg, #070b14, var(--bg) 45%, #070b14);
+      line-height:1.55;
+    }
+    a{ color:inherit; text-decoration:none; }
+    a:hover{ text-decoration:underline; }
 
-<style>
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #ffffff;
-    color: #000000;
-    margin: 0;
-}
+    .wrap{ max-width:var(--max); margin:0 auto; padding:22px; }
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      background: rgba(7,11,20,.75);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav{ display:flex; align-items:center; justify-content:space-between; gap:16px; }
+    .brand{ display:flex; align-items:center; gap:12px; min-width:240px; }
+    .logo{ width:40px; height:40px; border-radius:14px;
+      background: linear-gradient(135deg, rgba(125,211,252,.9), rgba(167,139,250,.9));
+      box-shadow: var(--shadow);
+    }
+    .brand-title{ font-weight:800; letter-spacing:.3px; }
+    .brand-sub{ font-size:.9rem; color:var(--muted); margin-top:1px; }
+    .links{ display:flex; flex-wrap:wrap; align-items:center; gap:14px; justify-content:flex-end; }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 14px; border-radius:999px; border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      box-shadow: 0 6px 16px rgba(0,0,0,.22);
+      font-weight:600; white-space:nowrap;
+    }
+    .btn:hover{ text-decoration:none; border-color: rgba(255,255,255,.25); }
+    .btn.primary{
+      border:none; color:#071022;
+      background: linear-gradient(135deg, rgba(125,211,252,.95), rgba(167,139,250,.95));
+    }
 
-.container {
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 20px;
-}
+    .hero{ padding: 36px 0 10px; }
+    .panel{
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+    h1{ margin: 0 0 10px; font-size: clamp(1.9rem, 4vw, 2.6rem); }
+    .lead{ margin:0; color:var(--muted); }
 
-h1 {
-    text-align: center;
-    margin-bottom: 10px;
-}
+    .section{ padding: 16px 0; }
+    .section h2{ margin: 10px 0 8px; font-size:1.25rem; }
 
-.subtitle {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 16px;
-}
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .card{
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      box-shadow: 0 10px 24px rgba(0,0,0,.25);
+      padding: 16px;
+      display:flex; flex-direction:column; gap:10px;
+      min-height: 150px;
+    }
+    .tag{
+      display:inline-flex; align-items:center; gap:8px;
+      font-size:.85rem; color:#071022; font-weight:700;
+      padding:6px 10px; border-radius:999px; width:fit-content;
+      background: linear-gradient(135deg, rgba(125,211,252,.95), rgba(167,139,250,.95));
+    }
+    .card h3{ margin: 2px 0 0; font-size: 1.05rem; }
+    .card p{ margin:0; color: var(--muted); }
+    .card .meta{ margin-top:auto; display:flex; justify-content:flex-end; }
 
-.section-title {
-    margin-top: 30px;
-    font-size: 20px;
-    border-bottom: 2px solid #000;
-    padding-bottom: 5px;
-}
+    footer{
+      padding: 28px 0 46px;
+      border-top: 1px solid var(--line);
+      margin-top: 18px;
+      color: var(--muted);
+    }
+    .foot{ display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between; }
 
-.article-link {
-    display: block;
-    margin: 10px 0;
-    padding: 10px;
-    text-decoration: none;
-    color: #000;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    transition: 0.2s;
-}
-
-.article-link:hover {
-    background-color: #f2f2f2;
-}
-</style>
+    @media (max-width: 900px){
+      .cards{ grid-template-columns: 1fr; }
+      .brand{ min-width:auto; }
+      .links{ justify-content:flex-start; }
+    }
+  </style>
 </head>
-
 <body>
+  <div class="topbar">
+    <div class="wrap nav">
+      <div class="brand">
+        <div class="logo"></div>
+        <div>
+          <div class="brand-title">Deep River Truth</div>
+          <div class="brand-sub">Encouragement • Scripture • Practical teaching</div>
+        </div>
+      </div>
+      <div class="links">
+        <a class="btn" href="../index.html#teachings">Teachings</a>
+        <a class="btn" href="../articles/articles.html">Articles</a>
+        <a class="btn" href="../index.html#about">About</a>
+        <a class="btn primary" href="https://www.instagram.com/deeprivertruth/" target="_blank">Instagram</a>
+      </div>
+    </div>
+  </div>
 
-<div class="container">
+  <header class="wrap hero">
+    <div class="panel">
+      <h1>Faith Series</h1>
+      <p class="lead">A complete collection of the Faith Revealed teachings and the Hindrances To Faith series.</p>
+    </div>
+  </header>
 
-<h1>Faith Articles</h1>
-<div class="subtitle">DeepRiverTruth Series by Stephen C. Kanski</div>
+  <main class="wrap">
 
-<div class="section-title">Featured</div>
+ <!--   <section class="section">
+      <h2>Featured</h2>
+      <div class="cards">
+        <article class="card">
+          <div class="tag">Scripture</div>
+          <h3>Psalm 23 Paraphrased</h3>
+          <p>KJV alongside modern wording.</p>
+          <div class="meta">
+            <a class="btn" href="Psalm-23-paraphrased.html">Read</a>
+          </div>
+        </article>
+      </div>
+    </section> -->
 
-<div class="section-title">Faith Revealed Series</div>
+    <section class="section">
+      <h2>Faith Revealed Series</h2>
+      <div class="cards">
+        <article class="card"><div class="tag">Part 1</div><h3>Introduction</h3><div class="meta"><a class="btn" href="faith/FaithRevealed.html">Read</a></div></article>
+        <article class="card"><div class="tag">Part 2</div><h3>Faith Begins</h3><div class="meta"><a class="btn" href="faith/FaithBegins.html">Read</a></div></article>
+        <article class="card"><div class="tag">Part 3</div><h3>Satanic Opposition</h3><div class="meta"><a class="btn" href="faith/SatanicOpposition.html">Read</a></div></article>
+        <article class="card"><div class="tag">Part 4</div><h3>The Importance Of Faith</h3><div class="meta"><a class="btn" href="faith/ImportanceOfFaith.html">Read</a></div></article>
+        <article class="card"><div class="tag">Part 5</div><h3>The Good Fight Of Faith</h3><div class="meta"><a class="btn" href="faith/GoodFightOfFaith.html">Read</a></div></article>
+        <article class="card"><div class="tag">Part 6</div><h3>The Authority Of Faith</h3><div class="meta"><a class="btn" href="faith/AuthorityOfFaith.html">Read</a></div></article>
+        <article class="card"><div class="tag">Part 7</div><h3>Our Position In Christ</h3><div class="meta"><a class="btn" href="faith/OurPositionInChrist.html">Read</a></div></article>
+        <article class="card"><div class="tag">Part 8</div><h3>Engaging The Enemy</h3><div class="meta"><a class="btn" href="faith/EngagingTheEnemy.html">Read</a></div></article>
+      </div>
+    </section>
 
-<a href="faith/FaithRevealed.html" class="article-link">
-Faith Revealed - Part 1 - Introduction
-</a>
+    <section class="section">
+      <h2>Hindrances To Faith</h2>
+      <div class="cards">
+        <article class="card"><div class="tag">Part 1</div><h3>Ignorance</h3><div class="meta"><a class="btn" href="faith/Ignorance.html">Read</a></div></article>
+        <article class="card"><div class="tag">Part 2</div><h3>A Guilty Conscience</h3><div class="meta"><a class="btn" href="faith/GuiltyConscience.html">Read</a></div></article>
+        <article class="card"><div class="tag">Part 3</div><h3>Your Concept Of God</h3><div class="meta"><a class="btn" href="faith/ConceptOfGod.html">Read</a></div></article>
+        <article class="card"><div class="tag">Part 4</div><h3>Receiving Honor From Men</h3><div class="meta"><a class="btn" href="faith/HonorFromMen.html">Read</a></div></article>
+        <article class="card"><div class="tag">Part 5</div><h3>Seducing Spirits</h3><div class="meta"><a class="btn" href="faith/SeducingSpirits.html">Read</a></div></article>
+        <article class="card"><div class="tag">Part 6</div><h3>Human Emotion</h3><div class="meta"><a class="btn" href="faith/HumanEmotion.html">Read</a></div></article>
+      </div>
+    </section>
 
-<a href="faith/FaithBegins.html" class="article-link">
-Faith Revealed - Part 2 - Faith Begins
-</a>
+    <footer>
+      <div class="foot">
+        <div>© <span id="year"></span> Deep River Truth</div>
+        <div><a class="btn" href="../index.html">Home</a></div>
+      </div>
+    </footer>
+  </main>
 
-<a href="faith/SatanicOpposition.html" class="article-link">
-Faith Revealed - Part 3 - Satanic Opposition To Faith
-</a>
-
-<a href="faith/ImportanceOfFaith.html" class="article-link">
-Faith Revealed - Part 4 - The Importance Of Faith
-</a>
-
-<a href="faith/GoodFightOfFaith.html" class="article-link">
-Faith Revealed - Part 5 - The Good Fight Of Faith
-</a>
-
-<a href="faith/AuthorityOfFaith.html" class="article-link">
-Faith Revealed - Part 6 - The Authority Of Faith
-</a>
-
-<a href="faith/OurPositionInChrist.html" class="article-link">
-Faith Revealed - Part 7 - Our Position In Christ
-</a>
-
-<a href="faith/EngagingTheEnemy.html" class="article-link">
-Faith Revealed - Part 8 - Engaging The Enemy
-</a>
-
-<div class="section-title">Hindrances To Faith</div>
-
-<a href="faith/Ignorance.html" class="article-link">
-Hindrances To Faith - Part 1 - Ignorance
-</a>
-
-<a href="faith/GuiltyConscience.html" class="article-link">
-Hindrances To Faith - Part 2 - A Guilty Conscience
-</a>
-
-<a href="faith/ConceptOfGod.html" class="article-link">
-Hindrances To Faith - Part 3 - Your Concept Of God
-</a>
-
-<a href="faith/HonorFromMen.html" class="article-link">
-Hindrances To Faith - Part 4 - Receiving Honor From Men - Not God
-</a>
-
-<a href="faith/SeducingSpirits.html" class="article-link">
-Hindrances To Faith - Part 5 - Seducing Spirits
-</a>
-
-<a href="faith/HumanEmotion.html" class="article-link">
-Hindrances To Faith - Part 6 - Human Emotion
-</a>
-
-</div>
-
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
