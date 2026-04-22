@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Deep River Truth — Exhortations" />
+  <title>Deep River Truth — Biblical Studies</title>
+ 
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NJWLGGYE19"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-NJWLGGYE19');
+  </script>
+  
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#0f1a2f;
+      --text:#e9eefc;
+      --muted:#b8c3e3;
+      --line:rgba(255,255,255,.12);
+      --accent:#7dd3fc;
+      --accent2:#a78bfa;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 1050px;
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1100px 600px at 20% 10%, rgba(125,211,252,.14), transparent 55%),
+        radial-gradient(900px 500px at 80% 0%, rgba(167,139,250,.14), transparent 55%),
+        linear-gradient(180deg, #070b14, var(--bg) 45%, #070b14);
+      line-height:1.55;
+    }
+    a{ color:inherit; text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+
+    .wrap{ max-width:var(--max); margin:0 auto; padding:22px; }
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      background: rgba(7,11,20,.75);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav{ display:flex; align-items:center; justify-content:space-between; gap:16px; }
+    .brand{ display:flex; align-items:center; gap:12px; min-width:240px; }
+    .logo{ width:40px; height:40px; border-radius:14px;
+      background: linear-gradient(135deg, rgba(125,211,252,.9), rgba(167,139,250,.9));
+      box-shadow: var(--shadow);
+    }
+    .brand-title{ font-weight:800; letter-spacing:.3px; }
+    .brand-sub{ font-size:.9rem; color:var(--muted); margin-top:1px; }
+    .links{ display:flex; flex-wrap:wrap; align-items:center; gap:14px; justify-content:flex-end; }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 14px; border-radius:999px; border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      box-shadow: 0 6px 16px rgba(0,0,0,.22);
+      font-weight:600; white-space:nowrap;
+    }
+    .btn:hover{ text-decoration:none; border-color: rgba(255,255,255,.25); }
+    .btn.primary{
+      border:none; color:#071022;
+      background: linear-gradient(135deg, rgba(125,211,252,.95), rgba(167,139,250,.95));
+    }
+
+    .hero{ padding: 36px 0 10px; }
+    .panel{
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+    h1{ margin: 0 0 10px; font-size: clamp(1.9rem, 4vw, 2.6rem); }
+    .lead{ margin:0; color:var(--muted); }
+
+    .section{ padding: 16px 0; }
+    .section h2{ margin: 10px 0 8px; font-size:1.25rem; }
+
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .card{
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      box-shadow: 0 10px 24px rgba(0,0,0,.25);
+      padding: 16px;
+      display:flex; flex-direction:column; gap:10px;
+      min-height: 150px;
+    }
+    .tag{
+      display:inline-flex; align-items:center; gap:8px;
+      font-size:.85rem; color:#071022; font-weight:700;
+      padding:6px 10px; border-radius:999px; width:fit-content;
+      background: linear-gradient(135deg, rgba(125,211,252,.95), rgba(167,139,250,.95));
+    }
+    .card h3{ margin: 2px 0 0; font-size: 1.05rem; }
+    .card p{ margin:0; color: var(--muted); }
+    .card .meta{ margin-top:auto; display:flex; justify-content:flex-end; }
+
+    footer{
+      padding: 28px 0 46px;
+      border-top: 1px solid var(--line);
+      margin-top: 18px;
+      color: var(--muted);
+    }
+    .foot{ display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between; }
+
+    @media (max-width: 900px){
+      .cards{ grid-template-columns: 1fr; }
+      .brand{ min-width:auto; }
+      .links{ justify-content:flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="wrap nav">
+      <div class="brand">
+        <div class="logo"></div>
+        <div>
+          <div class="brand-title">Deep River Truth</div>
+          <div class="brand-sub">Encouragement • Scripture • Practical teaching</div>
+        </div>
+      </div>
+      <div class="links">
+        <a class="btn" href="https://deeprivertruth.org/index.html#teachings">Teachings</a>
+        <a class="btn" href="../articles.html">Articles</a>
+        <a class="btn" href="https://deeprivertruth.org/index.html#about">About</a>
+        <a class="btn primary" href="https://www.instagram.com/deeprivertruth/" target="_blank">Instagram</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="wrap hero">
+    <div class="panel">
+      <h1><center>Biblical Studies</center></h1>
+      <p class="lead">A collection of deeper dives into scripture.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <section class="section">
+      <h1>Biblical Studies</h1>
+ <div class="cards">
+
+<article class="card"><div class="tag">Study</div><h3>Another Look at the Tree of Life</h3><div class="meta"><a class="btn" href="TreeOfLife.html">Read</a></div></article>
+       
+<article class="card"><div class="tag">Study</div><h3>Another Look At 2 Thessalonians</h3><div class="meta"><a class="btn" href="AnotherLookAt2Thessalonians.html">Read</a></div></article>
+
+<article class="card"><div class="tag">Study</div><h3>Understanding Antichrist</h3><div class="meta"><a class="btn" href="understanding_antichrist.html">Read</a></div></article>
+
+<article class="card"><div class="tag">Study</div><h3>Extra-Biblical Proof of the Existence of Jesus Christ</h3><div class="meta"><a class="btn" href="HistoricalJesus.html">Read</a></div></article>
+
+
+</div>
+</section>
+
+<footer>
+      <div class="foot">
+        <div>© <span id="year"></span> Deep River Truth</div>
+        <div><a class="btn" href="https://www.deeprivertruth.org">Home</a></div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
